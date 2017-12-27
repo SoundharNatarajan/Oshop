@@ -22,7 +22,7 @@ export class AppComponent {
 
       localStorage.removeItem('returnUrl');
       router.navigateByUrl(returnUrl); 
-
+      
     })
   }
 }
