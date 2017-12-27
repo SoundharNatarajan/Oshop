@@ -6,6 +6,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng4-validators';
+
+
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -51,6 +54,7 @@ import { CategoryService } from './category.service';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FormsModule,
+    CustomFormsModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
@@ -62,13 +66,19 @@ import { CategoryService } from './category.service';
       { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]}, 
       { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },      
       
-      { path: 'admin/products', 
-        component: AdminProductsComponent, 
-        canActivate: [AuthGuard, AdminGuard] 
-      },
       {
         path: 'admin/products/new',
         component: ProductFormComponent,
+        canActivate: [AuthGuard, AdminGuard]
+      },
+      {
+        path: 'admin/products/:id',
+        component: ProductFormComponent,
+        canActivate: [AuthGuard, AdminGuard]
+      },
+      {
+        path: 'admin/products',
+        component: AdminProductsComponent,
         canActivate: [AuthGuard, AdminGuard]
       },
       { path: 'admin/orders', 
